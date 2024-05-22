@@ -18,16 +18,17 @@ const Login = ({ navigation }) => {
   const handleLogin = () => {
     // Implement your login logic here
     console.log('Logging in with:', emailOrPhone, password);
+    navigation.navigate('Dashboard')
   };
 
   const handleForgotPassword = () => {
-    // Implement your forgot password logic here
+    // Implement  forgot password logic 
     console.log('Forgot password');
     navigation.navigate('Forgetpassword');
   };
 
   const handleCreateAccount = () => {
-    // Implement your create account logic here
+    // Implement  create account logic 
     console.log('Create account');
     navigation.navigate('Registration');
   };
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff', // Set background color to white to prevent any gaps
+    backgroundColor: '#ffffff', 
   },
   gradientBackground: {
     flex: 1,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: '100%',
-    paddingHorizontal: 20, // Add horizontal padding to the content container
+    paddingHorizontal: 20, 
   },
   inputContainer: {
     width: '100%',

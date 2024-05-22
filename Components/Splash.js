@@ -23,7 +23,7 @@ const SplashScreen = ({ navigation }) => {
 
     // Set a timeout to navigate from the splash screen to the main screen
     const timer = setTimeout(() => {
-      navigation.replace('Login'); // Replace with your main screen name
+      navigation.replace('Welcome'); 
     }, 3000); // 3 seconds delay for the splash screen
 
     return () => clearTimeout(timer);
@@ -41,7 +41,7 @@ const SplashScreen = ({ navigation }) => {
           },
         ]}
       >
-        {/* If you have a logo, replace Text with an Image component */}
+        {/* a logo or  replace Text with an Image component */}
         <Text style={styles.title}>HikeConnect</Text>
       </Animated.View>
     </View>
