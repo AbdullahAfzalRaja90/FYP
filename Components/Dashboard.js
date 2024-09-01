@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -16,12 +17,30 @@ const DashboardScreen = () => {
   const [location, setLocation] = useState(null);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const navigation = useNavigation();
+=======
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';  // Import useNavigation
+
+const DashboardScreen = () => {
+  const [location, setLocation] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const navigation = useNavigation();  // Use the useNavigation hook
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
 
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
+<<<<<<< HEAD
       if (status !== "granted") {
         console.error("Permission to access location was denied");
+=======
+      if (status !== 'granted') {
+        console.error('Permission to access location was denied');
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
         return;
       }
 
@@ -30,6 +49,7 @@ const DashboardScreen = () => {
     })();
   }, []);
 
+<<<<<<< HEAD
   const toggleDrawer = () => {
     setDrawerVisible(!drawerVisible);
   };
@@ -41,10 +61,15 @@ const DashboardScreen = () => {
   const handleNavigation = (screen) => {
     closeDrawer();
     navigation.navigate(screen);
+=======
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
   };
 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       {/* Hamburger Menu Button */}
       <TouchableOpacity style={styles.drawerButton} onPress={toggleDrawer}>
         <Ionicons name="menu-outline" size={30} color="white" />
@@ -52,6 +77,13 @@ const DashboardScreen = () => {
 
       {/* Map Display */}
       {location ? (
+=======
+      {/* Optional Button for Other Actions */}
+      <TouchableOpacity style={styles.drawerButton} onPress={toggleMenu}>
+        <Ionicons name="menu-outline" size={24} color="black" />
+      </TouchableOpacity>
+      {location && (
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
         <MapView
           style={styles.map}
           initialRegion={{
@@ -62,14 +94,19 @@ const DashboardScreen = () => {
           }}
         >
           <Marker
+<<<<<<< HEAD
             coordinate={{
               latitude: location.latitude,
               longitude: location.longitude,
             }}
+=======
+            coordinate={{ latitude: location.latitude, longitude: location.longitude }}
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
             title="Your Location"
             pinColor="blue"
           />
         </MapView>
+<<<<<<< HEAD
       ) : (
         <Text style={styles.loadingText}>Loading...</Text>
       )}
@@ -186,6 +223,28 @@ const DashboardScreen = () => {
               <Text style={styles.emergencyButtonText}>Emergency Info</Text>
             </TouchableOpacity>
           </View>
+=======
+      )}
+      {!location && <Text>Loading...</Text>}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showMenu}
+        onRequestClose={() => {
+          setShowMenu(!showMenu);
+        }}
+      >
+        <TouchableWithoutFeedback onPress={toggleMenu}>
+          <View style={styles.modalOverlay} />
+        </TouchableWithoutFeedback>
+        <View style={styles.menuContainer}>
+          <TouchableOpacity onPress={toggleMenu} style={styles.menuItem}>
+            <Text>Contact Us</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={toggleMenu} style={styles.menuItem}>
+            <Text>Policy</Text>
+          </TouchableOpacity>
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
         </View>
       </Modal>
     </View>
@@ -197,6 +256,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
+<<<<<<< HEAD
     flex: 1,
   },
   drawerButton: {
@@ -281,6 +341,30 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 18,
     fontWeight: "bold",
+=======
+    ...StyleSheet.absoluteFillObject,
+  },
+  drawerButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  menuContainer: {
+    position: 'absolute',
+    top: 50,
+    right: 10,
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 5,
+  },
+  menuItem: {
+    padding: 10,
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
   },
 });
 

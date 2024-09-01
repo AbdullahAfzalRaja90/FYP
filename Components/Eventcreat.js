@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import {
   View,
   TextInput,
@@ -14,15 +15,24 @@ import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
 import ENV from '../env'; // Adjust the path based on your directory structure
+=======
+import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
 
 const EventCreation = ({ navigation }) => {
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
+<<<<<<< HEAD
     date: new Date(),
     isPublic: true,
   });
   const [showDatePicker, setShowDatePicker] = useState(false);
+=======
+    date: '',
+    isPublic: true
+  });
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
 
   const handleInputChange = (name, value) => {
     setEventData(prevData => ({
@@ -31,6 +41,7 @@ const EventCreation = ({ navigation }) => {
     }));
   };
 
+<<<<<<< HEAD
   const validateEvent = () => {
     const { title, description, date } = eventData;
 
@@ -127,12 +138,47 @@ const EventCreation = ({ navigation }) => {
         </TouchableOpacity>
       </ScrollView>
     </LinearGradient>
+=======
+  const submitEvent = () => {
+    // Here you would typically handle the API request to save the event data
+    console.log('Event submitted:', eventData);
+    alert('Event Created Successfully!');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text>Create New Event</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Title"
+        onChangeText={text => handleInputChange('title', text)}
+        value={eventData.title}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Description"
+        onChangeText={text => handleInputChange('description', text)}
+        value={eventData.description}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Date"
+        onChangeText={text => handleInputChange('date', text)}
+        value={eventData.date}
+      />
+      <Button
+        title="Create Event"
+        onPress={submitEvent}
+      />
+    </View>
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
   },
   scrollContainer: {
     flexGrow: 1,
@@ -222,6 +268,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '600',
+=======
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+>>>>>>> eacb7dfb872a53faa632d4a6cdb1ddb88d8d1a17
   },
 });
 
