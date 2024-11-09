@@ -984,3 +984,71 @@ const validateEvent = () => {
 
   return true;
 };
+const validateEvent = () => {
+  const { title, description, eventType, startLocation, endLocation, creatorImage, price } = eventData;
+
+  // Check if the title, description, and price are valid
+  if (!title.trim()) {
+    Alert.alert('Validation Error', 'Please enter a valid title.');
+    return false;
+  }
+
+  if (!description.trim()) {
+    Alert.alert('Validation Error', 'Please enter a valid description.');
+    return false;
+  }
+
+  // Check if price is a valid number and greater than 0
+  if (!price || isNaN(price) || parseFloat(price) <= 0) {
+    Alert.alert('Validation Error', 'Please enter a valid price greater than 0.');
+    return false;
+  }
+
+  // Ensure other required fields are filled
+  if (!eventType || !creatorImage || !startLocation.lat || !endLocation.lat) {
+    Alert.alert('Validation Error', 'Please complete all required fields, including uploading an image.');
+    return false;
+  }
+
+  // Check that event date is not in the past
+  if (new Date(eventData.date) < new Date().setHours(0, 0, 0, 0)) {
+    Alert.alert('Validation Error', 'Event date cannot be in the past.');
+    return false;
+  }
+
+  return true;
+};
+const validateEvent = () => {
+  const { title, description, eventType, startLocation, endLocation, creatorImage, price } = eventData;
+
+  // Check if the title, description, and price are valid
+  if (!title.trim()) {
+    Alert.alert('Validation Error', 'Please enter a valid title.');
+    return false;
+  }
+
+  if (!description.trim()) {
+    Alert.alert('Validation Error', 'Please enter a valid description.');
+    return false;
+  }
+
+  // Check if price is a valid number and greater than 0
+  if (!price || isNaN(price) || parseFloat(price) <= 0) {
+    Alert.alert('Validation Error', 'Please enter a valid price greater than 0.');
+    return false;
+  }
+
+  // Ensure other required fields are filled
+  if (!eventType || !creatorImage || !startLocation.lat || !endLocation.lat) {
+    Alert.alert('Validation Error', 'Please complete all required fields, including uploading an image.');
+    return false;
+  }
+
+  // Check that event date is not in the past
+  if (new Date(eventData.date) < new Date().setHours(0, 0, 0, 0)) {
+    Alert.alert('Validation Error', 'Event date cannot be in the past.');
+    return false;
+  }
+
+  return true;
+};
